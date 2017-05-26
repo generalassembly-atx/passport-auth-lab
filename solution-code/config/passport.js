@@ -19,13 +19,13 @@ module.exports = function(passport){
       clientSecret    : process.env.FACEBOOK_API_SECRET,
       callbackURL     : 'http://localhost:3000/login/facebook/callback',
       enableProof			: true,
-      profileFields   : ['name', 'emails']
+      profileFields   : ['name']
   },
 
   // facebook will send back the tokens and profile
   function(access_token, refresh_token, profile, done) {
 
-  	console.log('profile', profile);
+  	console.log('Profile:  \n', profile);
 
 		// asynchronous
 		process.nextTick(function() {
@@ -45,11 +45,10 @@ module.exports = function(passport){
 	        var newUser = new User();
 
 					// set all of the facebook information in our user model
-		      newUser.fb.id    				= profile.id; // set the users facebook id	                
-		      newUser.fb.access_token = access_token; // we will save the token that facebook provides to the user	                
+		      newUser.fb.id    				= profile.id; // set the users facebook id
+		      newUser.fb.access_token = access_token; // we will save the token that facebook provides to the user
 		      newUser.fb.firstName  	= profile.name.givenName;
 		      newUser.fb.lastName 		= profile.name.familyName; // look at the passport user profile to see how names are returned
-		      newUser.fb.email 				= profile.emails[0].value; // facebook can return multiple emails so we'll take the first
 
 					// save our user to the database
 	        newUser.save(function(err) {
@@ -66,4 +65,3 @@ module.exports = function(passport){
   }));
 
 }
-
