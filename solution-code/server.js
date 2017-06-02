@@ -6,14 +6,14 @@ var app = express();
 
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/candies-app');
+mongoose.connect('mongodb://localhost/candies-app');
 
 
 // Configuring Passport
 var passport = require('passport');
 var expressSession = require('express-session');
 // TODO - Why Do we need this key ?
-app.use(expressSession({secret: 'mySecretKey'}));
+app.use(expressSession({secret: 'astarterwordtohelpcreatearandomandconsistentencryptionforallsessions'}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -25,6 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('views', path.join(__dirname, 'views'));
+
 app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 
@@ -38,4 +39,6 @@ var routes = require('./config/routes');
 
 app.use(routes);
 
-app.listen(3000);
+app.listen(3000, function(){
+  console.log("I LIKE CANDY!");
+});

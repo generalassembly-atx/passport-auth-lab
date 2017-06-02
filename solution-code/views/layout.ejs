@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="stylesheets/main.css" /></head>
+<script src="app/main.js" charset="utf-8"></script>
 <body>
 	<h1>
 		<a target="_blank" href="https://www.youtube.com/watch?v=mKli0y-Xr-Q">Candy Shoppe</a>
@@ -18,7 +19,7 @@
 		<% } else {  %>
 			<a class="btn" href="/login/facebook">Login with Facebook</a>
 		<% } %>
-		
+
 		<ul>
 			<% for(var i=0; i< candies.length; i++) {  %>
 		      <li>
@@ -32,7 +33,7 @@
 	<hr>
 	<div class="container">
 		<% if(user){ %>
-			<% include ./partials/candy/form %>
+				<% include ./partials/candy/form %>
 		<% } else {  %>
 			You Need to be Logged in to add candies to the list. <br>
 			<a class="btn" href="/login/facebook">Login with Facebook</a>
