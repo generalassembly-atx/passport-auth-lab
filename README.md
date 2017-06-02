@@ -30,7 +30,3 @@ Please find screenshots of the [solution-code](solution-code) provided
 
 - [Passport facebook Documentation](https://github.com/jaredhanson/passport-facebook)
 - [Facebook developers portal](https://developers.facebook.com/)
-
-
-
-# passport-auth-lab
